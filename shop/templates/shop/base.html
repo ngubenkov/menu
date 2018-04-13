@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+  <section id="header">
+    <div class="topcontainer">
+      <a href="/" aria-label="MAIN E-MENU">E-MENU
+          </a>
+    </div>
+    <div class="top-bl">
+      <div class="container">
+        <div class="cart">
+          {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+              Your cart:
+              <a href="{% url "cart:CartDetail" %}">
+                {{ total_items }} items. {{ cart.get_total_price }} €.
+              </a>
+            {% else %}
+              Cart is empty.
+            {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="content row" class="container">
+    {% block content %}{% endblock %}
+  </section>
+</body>
+<style >
+
+.top-bl{
+      @apply --layout-fixed-top;
+      z-index: 1;
+      background-color: beige;
+      --app-header-shadow: {
+        box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+        height: 10px;
+        bottom: -10px;
+      }
+      ;
+    }
+  #header{
+        @apply --layout-fixed-top;
+        z-index: 1;
+        background-color: beige;
+        --app-header-shadow: {
+          box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+          height: 10px;
+          bottom: -10px;
+        }
+        ;
+      }
+:host {
+        display: block;
+        position: relative;
+        padding-top: 130px;
+        padding-bottom: 64px;
+        min-height: 100vh;
+        --app-primary-color: #002300;
+        --app-secondary-color: #669999;
+        --app-accent-color: rgb(95, 95, 95);
+        --paper-button-ink-color: var(--app-accent-color);
+        --paper-icon-button-ink-color: var(--app-accent-color);
+        --paper-spinner-color: var(--app-accent-color);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        color: var(--app-primary-color);
+      }
+.topcontainer {
+        text-align: center;
+      }
+.topcontainer a {
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: 000000;
+      text-decoration: none;
+      text-shadow: 3px 2px 669999;
+      /* required for IE 11, so this <a> can receive pointer events */
+      display: inline-block;
+      pointer-events: auto;
+    }
+</style>
+</html>
