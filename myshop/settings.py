@@ -137,11 +137,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-# Email
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email for gmail
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'emenukitchen@gmail.com' # put your gmail email
+EMAIL_HOST_PASSWORD = '12123434Qq' # put your gmail password
+EMAIL_PORT = 587
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Paypal
 
-PAYPAL_RECEIVER_EMAIL = 'dikiigr-facilitator-1@gmail.com'
+PAYPAL_RECEIVER_EMAIL = 'emenukitchen@gmail.com'
 PAYPAL_TEST = True
