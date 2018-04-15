@@ -17,6 +17,12 @@ def CartAdd(request, product_id):
                                   update_quantity=cd['update'])
     return redirect('cart:CartDetail')
 
+def CartSubmit(request, product):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    print ('ok')
+    return 'OK'
+
 def CartRemove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
