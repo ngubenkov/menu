@@ -54,7 +54,7 @@ $(function(){
 
   console.log('OK')
   $('#submit1').click(function(){
-    var items = FormData($(cart)).get();
+    var items = FormData($(cart)).get();;
     $.ajax({
       type:'post',
       data: {'products':items},
