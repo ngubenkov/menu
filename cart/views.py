@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.conf import settings
 from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
@@ -17,11 +20,20 @@ def CartAdd(request, product_id):
                                   update_quantity=cd['update'])
     return redirect('cart:CartDetail')
 
-def CartSubmit(request, product):
+def CartSubmit(request):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    print ('ok')
-    return 'OK'
+
+    product_list = cart.get_email_values()
+    context = {
+        'product_list': product_list
+    }
+    message = render_to_string('cart/order_email.html', context)
+    subject, from_email, to_emails = "New order", settings.EMAIL_HOST_USER, ["frozmanik@gmail.com"]
+    email = EmailMessage(subject, message, to=to_emails, from_email=from_email)
+    email.content_subtype = 'html'
+    email.send()
+    cart.clear()
+    return redirect('cart:CartDetail')
 
 def CartRemove(request, product_id):
     cart = Cart(request)

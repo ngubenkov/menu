@@ -76,3 +76,15 @@ class Cart(object):
 
     def get_total_price_after_discount(self):
         return self.get_total_price() - self.get_discount()     
+
+    def get_email_values(self):
+        product_list = []
+        for item in self:
+            product = {
+                "price": str(item["price"]),
+                "quantity": item["quantity"],
+                "product_name": item["product"].name
+            }
+            product_list.append(product)
+
+        return product_list

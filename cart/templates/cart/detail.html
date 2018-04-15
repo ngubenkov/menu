@@ -37,33 +37,11 @@
     </tbody>
   </table>
 
+<form action="{% url 'cart:CartSubmit' %}" method="post">
+  {% csrf_token %}
   <p class="text-right">
     <a href="{% url "shop:ProductList"%}" class="btn btn-light">Continue ordering</a>
     <input type="submit" value="Proceed order" id="submit1">
-
-
   </p>
-
-
-
-
-{% block javascript %}
-
-<script>
-$(function(){
-
-  console.log('OK')
-  $('#submit1').click(function(){
-    var items = FormData($(cart)).get();;
-    $.ajax({
-      type:'post',
-      data: {'products':items},
-      url:'/cart/submit',
-      success:function(data){console.log('hhhhh')}
-
-    });
-  });
-});
-</script>
-{% endblock %}
+</form>
 {% endblock %}

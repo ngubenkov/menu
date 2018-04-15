@@ -3,9 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.CartDetail, name='CartDetail'),
+    url(r'^detail/$', views.CartDetail, name='CartDetail'),
     url(r'^remove/(?P<product_id>\d+)/$', views.CartRemove, name='CartRemove'),
     url(r'^add/(?P<product_id>\d+)/$', views.CartAdd, name='CartAdd'),
-    url(r'^/cart/submit/$', views.CartSubmit, name='CartSubmit')
+    url(r'^submit/$', views.CartSubmit, name='CartSubmit')
 
 ]
