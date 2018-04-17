@@ -28,18 +28,29 @@ def CartSubmit(request):
         'product_list': product_list
     }
     message = render_to_string('cart/order_email.html', context)
-    subject, from_email, to_emails = "New order", settings.EMAIL_HOST_USER, ["frozmanik@gmail.com"]
+    subject, from_email, to_emails = "New order", settings.EMAIL_HOST_USER, ["emenukitchen@gmail.com"]
     email = EmailMessage(subject, message, to=to_emails, from_email=from_email)
     email.content_subtype = 'html'
     email.send()
     cart.clear()
-    return redirect('cart:CartDetail')
+#    return redirect('cart:CartDetail')
+    cart = Cart(request)
+    for item in cart:
+        item['update_quantity_form'] = CartAddProductForm(
+                                        initial={
+                                            'quantity': item['quantity'],
+                                            'update': True
+                                        })
+    cupon_apply_form = CuponApllyForm()
+    return render(request, 'cart/order_sent.html',
+                 {'cart': cart, 'cupon_apply_form': cupon_apply_form})
 
 def CartRemove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('cart:CartDetail')
+
 
 def CartDetail(request):
     cart = Cart(request)

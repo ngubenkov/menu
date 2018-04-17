@@ -1,0 +1,13 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+  Your cart
+{% endblock %}
+
+{% block content %}
+  <h1>Your order has been sent </h1>
+  {% csrf_token %}
+  <p class="text-right">
+    <a href="{% url "shop:ProductList"%}" class="btn btn-light">Back to menu</a>
+  </p>
+{% endblock %}

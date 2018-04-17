@@ -8,7 +8,7 @@ import datetime
 
 
 def OrderDetail(obj):
-    return format_html('<a href="{}">Посмотреть</a>'.format(
+    return format_html('<a href="{}">See</a>'.format(
         reverse('orders:AdminOrderDetail', args=[obj.id])
     ))
 OrderDetail.short_description = 'Инфо'
@@ -17,7 +17,7 @@ def OrderPDF(obj):
     return format_html('<a href="{}">PDF</a>'.format(
         reverse('orders:AdminOrderPDF', args=[obj.id])
     ))
-OrderPDF.short_description = 'В PDF'
+OrderPDF.short_description = 'In pdf'
 
 def ExportToCSV(modeladmin, request, queryset):
     opts = modeladmin.model._meta
