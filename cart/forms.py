@@ -10,4 +10,4 @@ class CartAddProductForm(forms.Form):
 
 
 class CommentForm(forms.Form):
-    post =forms.CharField(required=False)
+    post =forms.CharField(required=False, label="Order's detail")

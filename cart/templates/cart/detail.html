@@ -43,13 +43,12 @@
         <td>{{ cart.get_total_price }} €.</td>
       </tr>
       <tr>
-        <td>Order's detail</td>
         <td>
-          <form action="{% url 'cart:CartSubmit' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
 
         </td>
+        <td><form action="{% url 'cart:CartSubmit' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}</td>
         <td></td>
         <td></td>
         <td></td>
