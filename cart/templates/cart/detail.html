@@ -26,18 +26,43 @@
                 <input type="submit" value="refresh">
               </form>
             </td>
+
             <td><a href="{% url "cart:CartRemove" product.id %}">Remove</a></td>
             <td class="num">{{ item.price }} €.</td>
             <td class="num">{{ item.total_price }} €.</td>
+
           </tr>
         {% endwith %}
       {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total price: </td>
+        <td>{{ cart.get_total_price }} €.</td>
+      </tr>
+      <tr>
+        <td>Order's detail</td>
+        <td>
+          <form action="{% url 'cart:CartSubmit' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td></td>
+      </tr>
 
 
     </tbody>
   </table>
 
-<form action="{% url 'cart:CartSubmit' %}" method="post">
+
+
   {% csrf_token %}
   <p class="text-right">
     <a href="{% url "shop:ProductList"%}" class="btn btn-light">Continue ordering</a>

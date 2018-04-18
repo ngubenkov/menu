@@ -31,6 +31,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True, verbose_name="Available")
     created = models.DateTimeField(auto_now_add=True, verbose_name='Created')
     updated = models.DateTimeField(auto_now=True, verbose_name='Updated')
+    #comment = models.TextField(blank=True, verbose_name="Comment")  # ADDED
 
     class Meta:
         ordering = ['name']

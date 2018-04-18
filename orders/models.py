@@ -35,7 +35,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items')
     product = models.ForeignKey(Product, related_name='order_items')
-    price = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
+    price = models.DecimalField(verbose_name='Price', max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(verbose_name='quantity', default=1)
 
     def __str__(self):

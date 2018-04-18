@@ -5,6 +5,7 @@ from cupons.models import Cupon
 
 
 class Cart(object):
+    
     def __init__(self, request):
         # Инициализация корзины пользователя
         self.session = request.session
@@ -75,7 +76,7 @@ class Cart(object):
         return Decimal('0')
 
     def get_total_price_after_discount(self):
-        return self.get_total_price() - self.get_discount()     
+        return self.get_total_price() - self.get_discount()
 
     def get_email_values(self):
         product_list = []
