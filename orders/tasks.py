@@ -2,6 +2,8 @@ from celery import task
 from django.core.mail import send_mail
 from .models import Order
 
+#dont need this page
+
 @task
 def OrderCreated(order_id):
     """

@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 
-# Модель категории
+# category model
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Name')
     slug = models.SlugField(max_length=200, db_index=True, unique=True)

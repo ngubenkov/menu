@@ -24,10 +24,7 @@ def CartAdd(request, product_id):
 
 def CartSubmit(request):  # post request
     cart = Cart(request)
-
     product_list = cart.get_email_values()
-
-
     form = CommentForm(request.POST)
     if form.is_valid():
         text = form.cleaned_data['post']

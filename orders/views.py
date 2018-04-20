@@ -43,7 +43,7 @@ def OrderCreate(request):
                                          quantity=item['quantity'])
             cart.clear()
 
-            # Асинхронная отправка сообщения
+            # send emails
             OrderCreated.delay(order.id)
             request.session['order_id'] = order.id
             return redirect(reverse('payment:process'))

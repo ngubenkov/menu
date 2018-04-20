@@ -8,10 +8,10 @@
 
 {% block breadcrumbs %}
 <div class="breadcrumbs">
-  <a href="{% url "admin:index" %}">Главная</a> &rsaquo;
-  <a href="{% url "admin:orders_order_changelist" %}">Заказы</a> &rsaquo;
-  <a href="{% url "admin:orders_order_change" order.id %}">Заказ {{ order.id }}</a> &rsaquo;
-  Детали
+  <a href="{% url "admin:index" %}">Main</a> &rsaquo;
+  <a href="{% url "admin:orders_order_changelist" %}">Orders</a> &rsaquo;
+  <a href="{% url "admin:orders_order_change" order.id %}">Order {{ order.id }}</a> &rsaquo;
+  details
 </div>
 {% endblock %}
 
@@ -19,16 +19,16 @@
   <h1>Заказ {{ order.id }}</h1>
   <ul class="object-tools">
     <li>
-      <a href="#" onclick="window.print()">Распечатать заказ</a>
+      <a href="#" onclick="window.print()">print</a>
     </li>
   </ul>
   <table width="100%">
     <tr>
-      <th>Создан</th>
+      <th>created</th>
       <td>{{ order.created }}</td>
     </tr>
     <tr>
-      <th>Заказчик</th>
+      <th>Client</th>
       <td>{{ order.first_name }} {{ order.last_name }}</td>
     </tr>
     <tr>
@@ -36,7 +36,7 @@
       <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
     </tr>
     <tr>
-      <th>Адрес</th>
+      <th>addres</th>
       <td>{{ order.address }}</td>
     </tr>
     <tr>

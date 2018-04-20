@@ -5,18 +5,18 @@ from cupons.models import Cupon
 
 
 class Cart(object):
-    
+
     def __init__(self, request):
-        # Инициализация корзины пользователя
+        # initialization of cart
         self.session = request.session
         self.cupon_id = self.session.get('cupon_id')
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
-            # Сохраняем корзину пользователя в сессию
+            # save cart in session
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
-    # Добавление товара в корзину пользователя или обновление количеста товара
+    # add item or update quantity
     def add(self, product, quantity=1, update_quantity=False):
         product_id = str(product.id)
         if product_id not in self.cart:
@@ -28,10 +28,10 @@ class Cart(object):
             self.cart[product_id]['quantity'] += quantity
         self.save()
 
-    # Сохранение данных в сессию
+    # save data
     def save(self):
         self.session[settings.CART_SESSION_ID] = self.cart
-        # Указываем, что сессия изменена
+        # set the session was changed
         self.session.modified = True
 
     def remove(self, product):
@@ -40,7 +40,7 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
 
-    # Итерация по товарам
+    # iter in items
     def __iter__(self):
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
@@ -53,7 +53,7 @@ class Cart(object):
             yield item
 
 
-    # Количество товаров
+    # quantity of items
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
 

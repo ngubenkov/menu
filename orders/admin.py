@@ -11,7 +11,7 @@ def OrderDetail(obj):
     return format_html('<a href="{}">See</a>'.format(
         reverse('orders:AdminOrderDetail', args=[obj.id])
     ))
-OrderDetail.short_description = 'Инфо'
+OrderDetail.short_description = 'info'
 
 def OrderPDF(obj):
     return format_html('<a href="{}">PDF</a>'.format(
