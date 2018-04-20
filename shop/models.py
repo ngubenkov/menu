@@ -19,7 +19,7 @@ class Category(models.Model):
         return reverse('shop:ProductListByCategory', args=[self.slug])
 
 
-# Модель продукта
+# model of item
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', verbose_name="Category")
     name = models.CharField(max_length=200, db_index=True, verbose_name="Name")
