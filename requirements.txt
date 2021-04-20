@@ -44,7 +44,7 @@ paypalrestsdk==1.13.1
 pdfrw==0.4
 Pillow==5.1.0
 pluggy==0.6.0
-py==1.5.3
+py==1.10.0
 pycparser==2.18
 PyJWT==1.4.2
 pyOpenSSL==17.5.0
